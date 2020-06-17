@@ -1,9 +1,9 @@
 import React from "react";
-import User from "../components/User";
 import FullUser from "../components/FullUser";
 import NewUser from "../components/NewUser";
 import ErrorMessage from "../components/ErrorMessage";
 import axios from "axios";
+import UsersTable from "../components/UsersTable";
 
 class Users extends React.Component {
   state = {
@@ -25,27 +25,24 @@ class Users extends React.Component {
   userSelectedHandler = (id) => this.setState({ selectedUserId: id });
 
   render() {
-    const users = this.state.users.map((user) => (
-      <User
-        key={user.id}
-        name={user.name}
-        email={user.email}
-        clicked={() => this.userSelectedHandler(user.id)}
-      />
-    ));
-
     return (
-      <div>
+      <React.Fragment>
+        {!this.state.error ? (
+          <UsersTable
+            users={this.state.users}
+            userSelectedHandler={this.userSelectedHandler}
+          />
+        ) : (
+          <ErrorMessage />
+        )}
+
         <section className="Users">
-          {!this.state.error ? users : <ErrorMessage />}
-        </section>
-        <section>
           <FullUser id={this.state.selectedUserId} />
         </section>
         <section>
           <NewUser />
         </section>
-      </div>
+      </React.Fragment>
     );
   }
 }
