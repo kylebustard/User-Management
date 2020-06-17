@@ -2,6 +2,7 @@ import React from "react";
 import User from "../components/User";
 import FullUser from "../components/FullUser";
 import NewUser from "../components/NewUser";
+import ErrorMessage from "../components/ErrorMessage";
 import axios from "axios";
 
 class Users extends React.Component {
@@ -24,21 +25,20 @@ class Users extends React.Component {
   userSelectedHandler = (id) => this.setState({ selectedUserId: id });
 
   render() {
-    let users = <p style={{ textAlign: "center" }}>Something went wrong.</p>;
-    if (!this.state.error) {
-      users = this.state.users.map((user) => (
-        <User
-          key={user.id}
-          name={user.name}
-          email={user.email}
-          clicked={() => this.userSelectedHandler(user.id)}
-        />
-      ));
-    }
+    const users = this.state.users.map((user) => (
+      <User
+        key={user.id}
+        name={user.name}
+        email={user.email}
+        clicked={() => this.userSelectedHandler(user.id)}
+      />
+    ));
 
     return (
       <div>
-        <section className="Users">{users}</section>
+        <section className="Users">
+          {!this.state.error ? users : <ErrorMessage />}
+        </section>
         <section>
           <FullUser id={this.state.selectedUserId} />
         </section>
