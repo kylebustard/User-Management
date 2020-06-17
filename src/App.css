@@ -1,22 +1,30 @@
-.App {
+* {
+  border: 3px solid lightgray;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.Header {
   text-align: center;
+  border: solid 3px yellowgreen;
 }
 
-.App-logo {
-  height: 80px;
-}
-
-.App-header {
+.Header-header {
   background-color: rgb(0, 184, 222);
-  height: 150px;
+  height: 200px;
   padding: 20px;
   color: white;
 }
 
-.App-title {
+.Header-title {
   font-size: 1.5em;
 }
 
-.App-intro {
+.Header-intro {
   font-size: large;
 }

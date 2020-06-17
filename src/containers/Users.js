@@ -4,6 +4,7 @@ import NewUser from "../components/NewUser";
 import ErrorMessage from "../components/ErrorMessage";
 import axios from "axios";
 import UsersTable from "../components/UsersTable";
+import "./Users.css";
 
 class Users extends React.Component {
   state = {
@@ -26,7 +27,10 @@ class Users extends React.Component {
 
   render() {
     return (
-      <React.Fragment>
+      <div className="Users">
+                <section className="FullUser">
+          <FullUser id={this.state.selectedUserId} />
+        </section>
         {!this.state.error ? (
           <UsersTable
             users={this.state.users}
@@ -36,13 +40,11 @@ class Users extends React.Component {
           <ErrorMessage />
         )}
 
-        <section className="Users">
-          <FullUser id={this.state.selectedUserId} />
-        </section>
-        <section>
+
+        <section className="NewUser">
           <NewUser />
         </section>
-      </React.Fragment>
+      </div>
     );
   }
 }
