@@ -1,5 +1,5 @@
 * {
-  border: 3px solid lightgray;
+  /* border: 1px solid lightgray; */
   box-sizing: border-box;
 }
 
@@ -11,7 +11,6 @@ body {
 
 .Header {
   text-align: center;
-  border: solid 3px yellowgreen;
 }
 
 .Header-header {

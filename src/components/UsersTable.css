@@ -1,0 +1,20 @@
+.UsersTable {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 600px;
+}
+
+.UsersTable h1 {
+  text-align: center;
+}
+
+.UsersTable table {
+  position: relative;
+  padding: 30px;
+  border: 1px solid #ccc;
+  box-shadow: 0 2px 2px #ccc;
+  padding-right: 50px;
+  padding-left: 50px;
+}

@@ -3,7 +3,7 @@ import axios from "axios";
 import "./UsersManagement.css";
 import { Link, Router } from "@reach/router";
 import UsersTable from "../components/UsersTable";
-import FullUser from "../components/FullUser";
+import ShowUser from "../components/ShowUser";
 import NewUser from "../components/NewUser";
 
 class UsersManagement extends React.Component {
@@ -11,8 +11,6 @@ class UsersManagement extends React.Component {
     users: [],
     selectedUserId: null,
     error: false,
-    selectedView: "SHOW_ALL_USERS",
-    views: ["SHOW_ALL_USERS", "NEW_USER", "SHOW_USER", "EDIT_USER"],
   };
 
   async componentDidMount() {
@@ -31,9 +29,9 @@ class UsersManagement extends React.Component {
     return (
       <div className="UsersManagement">
         <nav>
-          <Link to="/users">Users</Link>
-          <Link to="/users/new">Create New User</Link>
-          <Link to="/users/1">User 1</Link>
+          <Link to="/users" className="Link">Show Users</Link>
+          <Link to="/users/new" className="Link">Create New User</Link>
+          <Link to="/users/1" className="Link">Show User 1</Link>
         </nav>
 
         <Router>
@@ -43,11 +41,11 @@ class UsersManagement extends React.Component {
             users={this.state.users}
             userSelectedHandler={this.userSelectedHandler}
           />
-          <FullUser
+          <NewUser path="/users/new" />
+          <ShowUser
             path="/users/1"
             selectedUserId={this.state.selectedUserId}
           />
-          <NewUser path="/users/new" />
         </Router>
       </div>
     );

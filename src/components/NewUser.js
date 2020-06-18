@@ -1,5 +1,6 @@
 import React from "react";
 import axios from "axios";
+import "./NewUser.css"
 
 class NewUser extends React.Component {
   state = {
@@ -19,20 +20,28 @@ class NewUser extends React.Component {
   render() {
     return (
       <div className="NewUser">
-        <h1>Add a User</h1>
-        <label>Name</label>
-        <input
-          type="text"
-          value={this.state.name}
-          onChange={(event) => this.setState({ name: event.target.value })}
-        />
-        <label>Email</label>
-        <input
-          type="text"
-          value={this.state.email}
-          onChange={(event) => this.setState({ email: event.target.value })}
-        />
-        <button onClick={this.postUserHandler}>Add User</button>
+        <h1>Create New User</h1>
+        <form
+          onSubmit={(event) => {
+            event.preventDefault();
+            const { name, email } = event.target.elements;
+            this.setState({ name: name.value, email: email.value });
+          }}
+        >
+          <label htmlFor="name">Name</label>
+          <input
+            id="name"
+            type="text"
+          />
+          <br />
+          <label htmlFor="email">Email</label>
+          <input
+            id="email"
+            type="text"
+          />
+          <br />
+          <button onClick={this.postUserHandler}>Add User</button>
+        </form>
       </div>
     );
   }

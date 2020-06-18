@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import axios from "axios";
-import "./FullUser.css";
+import "./ShowUser.css"
 
-class FullUser extends Component {
+class ShowUser extends Component {
   state = {
     loadedUser: null,
   };
@@ -27,14 +27,15 @@ class FullUser extends Component {
     console.log(response);
   };
 
-  render() {
-    let user = <p style={{ textAlign: "center" }}>Please select a User!</p>;
+  render() {console.log(this.props.selectedUserId)
+    let user = <h1>Please select a User</h1>;
     if (this.props.selectedUserId) {
-      user = <p style={{ textAlign: "center" }}>Loading...!</p>;
+      user = <h1>Loading...</h1>;
     }
     if (this.state.loadedUser) {
       user = (
-        <div className="FullUser">
+        <div className="ShowUser">
+
           <h1>{this.state.loadedUser.title}</h1>
           <p>{this.state.loadedUser.content}</p>
           <div className="Edit">
@@ -45,8 +46,9 @@ class FullUser extends Component {
         </div>
       );
     }
-    return user;
+
+    return (<div className="ShowUser">{user}</div>);
   }
 }
 
-export default FullUser;
+export default ShowUser;

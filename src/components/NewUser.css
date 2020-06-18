@@ -1,0 +1,25 @@
+.NewUser {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 600px;
+}
+
+.NewUser form {
+  padding: 30px;
+  border: 1px solid #ccc;
+  box-shadow: 0 2px 2px #ccc;
+}
+
+.NewUser label {
+  margin-bottom: 70px;
+}
+
+.NewUser input {
+  margin: 10px;
+}
+
+.NewUser button {
+  padding: 0px;
+}

@@ -1,6 +1,7 @@
 import React from "react";
 import UserRow from "./UserRow";
 import ErrorMessage from "./ErrorMessage";
+import "./UsersTable.css"
 
 const UsersTable = ({ error, users, userSelectedHandler }) => {
   if (error) return <ErrorMessage />;
@@ -16,6 +17,8 @@ const UsersTable = ({ error, users, userSelectedHandler }) => {
   ));
 
   return (
+    <div className="UsersTable">
+      <h1>Users</h1>
     <table>
       <thead>
         <tr>
@@ -25,6 +28,7 @@ const UsersTable = ({ error, users, userSelectedHandler }) => {
       </thead>
       <tbody>{userRows}</tbody>
     </table>
+    </div>
   );
 };
 
