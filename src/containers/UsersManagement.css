@@ -1,0 +1,22 @@
+.UsersManagement {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border: 3px solid black;
+}
+
+nav {
+  top: 0;
+  left: 33%;
+  right: 33%;
+  bottom: 0;
+  font-size: 18px;
+  font-weight: bold;
+  border: 3px solid orange;
+}

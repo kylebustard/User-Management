@@ -1,7 +1,10 @@
 import React from "react";
 import UserRow from "./UserRow";
+import ErrorMessage from "./ErrorMessage";
 
-const UsersTable = ({ users, userSelectedHandler }) => {
+const UsersTable = ({ error, users, userSelectedHandler }) => {
+  if (error) return <ErrorMessage />;
+
   const userRows = users.map((user) => (
     <UserRow
       key={user.id}

@@ -8,12 +8,13 @@ class FullUser extends Component {
   };
 
   async componentDidUpdate() {
-    if (this.props.id) {
+    if (this.props.selectedUserId) {
       if (
         !this.state.loadedUser ||
-        (this.state.loadedUser && this.state.loadedUser.id !== this.props.id)
+        (this.state.loadedUser &&
+          this.state.loadedUser.id !== this.props.selectedUserId)
       ) {
-        const response = await axios.get("/users/" + this.props.id);
+        const response = await axios.get("/users/" + this.props.selectedUserId);
 
         this.setState({ loadedUser: response.data });
       }
@@ -21,14 +22,14 @@ class FullUser extends Component {
   }
 
   deleteUserHandler = async () => {
-    const response = await axios.delete("/users/" + this.props.id);
+    const response = await axios.delete("/users/" + this.props.selectedUserId);
 
     console.log(response);
   };
 
   render() {
     let user = <p style={{ textAlign: "center" }}>Please select a User!</p>;
-    if (this.props.id) {
+    if (this.props.selectedUserId) {
       user = <p style={{ textAlign: "center" }}>Loading...!</p>;
     }
     if (this.state.loadedUser) {

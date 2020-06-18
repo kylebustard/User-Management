@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Logo from "./klogo.js";
 import "./App.css";
-import Users from "./containers/Users";
+import UsersManagement from "./containers/UsersManagement";
 
 class App extends Component {
   render() {
@@ -12,11 +12,9 @@ class App extends Component {
             <Logo />
             <h1 className="Header-title">Welcome to Kyruus</h1>
           </header>
-          <p className="Header-intro">
-            To get started, edit <code>src/App.js</code> and save to reload.
-          </p>
+          <p className="Header-intro">Users Management</p>
         </div>
-        <Users />
+        <UsersManagement />
       </React.Fragment>
     );
   }
