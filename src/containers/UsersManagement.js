@@ -13,7 +13,7 @@ class UsersManagement extends React.Component {
     error: false,
   };
 
-  async componentDidMount() {
+  async componentDidMount() {console.log("UsersManagement - Component Did Mount!")
     try {
       const response = await axios.get("/users");
       const users = response.data;
@@ -24,12 +24,11 @@ class UsersManagement extends React.Component {
   }
 
   userSelectedHandler = (id) => {
-    console.log("ID: ", id);
     this.setState({ selectedUserId: id });
-    navigate(`/users/${id}`)
-  }
+    navigate(`/users/${id}`);
+  };
 
-  render() {
+  render() {console.log("UsersManagement - Rendered!")
     return (
       <div className="UsersManagement">
         <nav>
@@ -39,7 +38,7 @@ class UsersManagement extends React.Component {
           <Link to="/users/new" className="Link">
             Create New User
           </Link>
-          <Link to={`/users/${this.state.selectedUserId}`}>Show User</Link>
+          <Link to="/users/:userId">Show User</Link>
         </nav>
 
         <Router>
@@ -50,8 +49,8 @@ class UsersManagement extends React.Component {
             userSelectedHandler={this.userSelectedHandler}
           />
           <NewUser path="/users/new" />
-          <ShowUser path="/user/:userId" id={this.state.selectedUserId} />
         </Router>
+        <ShowUser path="/user/:userId" id={this.state.selectedUserId} />
       </div>
     );
   }
