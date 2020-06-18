@@ -9,7 +9,7 @@ import NewUser from "../components/NewUser";
 class UsersManagement extends React.Component {
   state = {
     users: [],
-    selectedUserId: 1,
+    selectedUserId: null,
     error: false,
   };
 
@@ -38,7 +38,7 @@ class UsersManagement extends React.Component {
           <Link to="/users/new" className="Link">
             Create New User
           </Link>
-          <Link to="/users/:userId">Show User</Link>
+          <Link to="/users/:userId" style={{visibility: "hidden"}} />
         </nav>
 
         <Router>
