@@ -1,7 +1,7 @@
 import React from "react";
 import axios from "axios";
 import "./UsersManagement.css";
-import { Link, Router } from "@reach/router";
+import { Link, Router, navigate } from "@reach/router";
 import UsersTable from "../components/UsersTable";
 import ShowUser from "../components/ShowUser";
 import NewUser from "../components/NewUser";
@@ -9,7 +9,7 @@ import NewUser from "../components/NewUser";
 class UsersManagement extends React.Component {
   state = {
     users: [],
-    selectedUserId: null,
+    selectedUserId: 1,
     error: false,
   };
 
@@ -23,15 +23,23 @@ class UsersManagement extends React.Component {
     }
   }
 
-  userSelectedHandler = (id) => this.setState({ selectedUserId: id });
+  userSelectedHandler = (id) => {
+    console.log("ID: ", id);
+    this.setState({ selectedUserId: id });
+    navigate(`/users/${id}`)
+  }
 
   render() {
     return (
       <div className="UsersManagement">
         <nav>
-          <Link to="/users" className="Link">Show Users</Link>
-          <Link to="/users/new" className="Link">Create New User</Link>
-          <Link to="/users/1" className="Link">Show User 1</Link>
+          <Link to="/users" className="Link">
+            Show Users
+          </Link>
+          <Link to="/users/new" className="Link">
+            Create New User
+          </Link>
+          <Link to={`/users/${this.state.selectedUserId}`}>Show User</Link>
         </nav>
 
         <Router>
@@ -42,10 +50,7 @@ class UsersManagement extends React.Component {
             userSelectedHandler={this.userSelectedHandler}
           />
           <NewUser path="/users/new" />
-          <ShowUser
-            path="/users/1"
-            selectedUserId={this.state.selectedUserId}
-          />
+          <ShowUser path="/user/:userId" id={this.state.selectedUserId} />
         </Router>
       </div>
     );

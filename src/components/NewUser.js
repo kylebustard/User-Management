@@ -1,6 +1,6 @@
 import React from "react";
 import axios from "axios";
-import "./NewUser.css"
+import "./NewUser.css";
 
 class NewUser extends React.Component {
   state = {
@@ -29,16 +29,10 @@ class NewUser extends React.Component {
           }}
         >
           <label htmlFor="name">Name</label>
-          <input
-            id="name"
-            type="text"
-          />
+          <input id="name" type="text" />
           <br />
           <label htmlFor="email">Email</label>
-          <input
-            id="email"
-            type="text"
-          />
+          <input id="email" type="text" />
           <br />
           <button onClick={this.postUserHandler}>Add User</button>
         </form>
