@@ -1,14 +1,14 @@
 import React from "react";
 import axios from "axios";
 import "./ShowUser.css";
-import ErrorMessage from './ErrorMessage'
+import ErrorMessage from "./ErrorMessage";
 
 class ShowUser extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      loadedUser: null, 
-      error: false
+      loadedUser: null,
+      error: false,
     };
   }
 
@@ -26,7 +26,7 @@ class ShowUser extends React.Component {
             const loadedUser = response.data;
             this.setState({ loadedUser });
           } catch (error) {
-            this.setState({ error: true })
+            this.setState({ error: true });
           }
         } else {
           const loadedUser = users.find((user) => user.id === id);
@@ -37,7 +37,9 @@ class ShowUser extends React.Component {
   }
 
   render() {
-    return this.state.error ? <ErrorMessage /> : this.state.loadedUser ? (
+    return this.state.error ? (
+      <ErrorMessage />
+    ) : this.state.loadedUser ? (
       <div className="ShowUser">
         <h1>User</h1>
         <p>Name: {this.state.loadedUser.name}</p>

@@ -22,7 +22,7 @@ class UsersManagement extends React.Component {
       const users = response.data;
       this.setState({ users });
     } catch (error) {
-      this.setState ({ error: true })
+      this.setState({ error: true });
     }
   }
 
