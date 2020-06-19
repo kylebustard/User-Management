@@ -1,57 +1,51 @@
-import React, { Component } from "react";
+import React from "react";
 import axios from "axios";
 import "./ShowUser.css";
-import { navigate } from "@reach/router";
+import ErrorMessage from './ErrorMessage'
 
-class ShowUser extends Component {
+class ShowUser extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      loadedUser: null,
+      loadedUser: null, 
+      error: false
     };
   }
 
-  async componentDidUpdate() {
-    console.log("ShowUser - Component Did Update! ", this.props.id, " - loaded: ", this.state.loadedUser);
+  async componentDidMount() {
     if (this.props.id) {
       if (
         !this.state.loadedUser ||
         (this.state.loadedUser && this.state.loadedUser.id !== this.props.id)
       ) {
-        const response = await axios.get("/users/" + this.props.id);
+        const { users, id } = this.props;
 
-        this.setState({ loadedUser: response.data });
-        console.log("ShowUser - data - ", response.data);
+        if (!users.length) {
+          try {
+            const response = await axios.get("/users/" + id);
+            const loadedUser = response.data;
+            this.setState({ loadedUser });
+          } catch (error) {
+            this.setState({ error: true })
+          }
+        } else {
+          const loadedUser = users.find((user) => user.id === id);
+          this.setState({ loadedUser });
+        }
       }
     }
   }
 
-  deleteUserHandler = async () => {
-    const response = await axios.delete("/users/" + this.props.id);
-
-    navigate("/users");
-  };
-
-  render() {console.log("ShowUser - Rendered - props ", this.props.id)
-    let user = <h1>Please select a User</h1>;
-    if (this.props.id) {
-      user = <h1>Loading...</h1>;
-    }
-    if (this.state.loadedUser) {
-      user = (
-        <div className="ShowUser">
-          <h1>{this.state.loadedUser.name}</h1>
-          <p>{this.state.loadedUser.email}</p>
-          <div className="Edit">
-            <button className="Delete" onClick={this.deleteUserHandler}>
-              Delete
-            </button>
-          </div>
-        </div>
-      );
-    }
-
-    return <div className="ShowUser">{user}</div>;
+  render() {
+    return this.state.error ? <ErrorMessage /> : this.state.loadedUser ? (
+      <div className="ShowUser">
+        <h1>User</h1>
+        <p>Name: {this.state.loadedUser.name}</p>
+        <p>Email: {this.state.loadedUser.email}</p>
+      </div>
+    ) : (
+      <h1>Loading...</h1>
+    );
   }
 }
 

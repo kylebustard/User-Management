@@ -14,10 +14,11 @@ class NewUser extends React.Component {
       email: this.state.email,
     };
 
-    axios.post("/users", user).then((res) => console.log(res));
+    axios.post("/users/", user);
   };
 
   render() {
+    console.log("NewUser - Render");
     return (
       <div className="NewUser">
         <h1>Create New User</h1>
@@ -26,6 +27,7 @@ class NewUser extends React.Component {
             event.preventDefault();
             const { name, email } = event.target.elements;
             this.setState({ name: name.value, email: email.value });
+            this.postUserHandler();
           }}
         >
           <label htmlFor="name">Name</label>

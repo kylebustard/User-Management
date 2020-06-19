@@ -1,7 +1,7 @@
 import React from "react";
 
 const ErrorMessage = () => (
-  <p style={{ textAlign: "center" }}>Something went wrong.</p>
+  <h1 style={{ textAlign: "center" }}>Sorry! Something went wrong.</h1>
 );
 
 export default ErrorMessage;

@@ -1,4 +1,4 @@
-.UsersTable {
+.ShowUsers {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -6,11 +6,11 @@
   width: 600px;
 }
 
-.UsersTable h1 {
+.ShowUsers h1 {
   text-align: center;
 }
 
-.UsersTable table {
+.ShowUsers table {
   position: relative;
   padding: 30px;
   border: 1px solid #ccc;

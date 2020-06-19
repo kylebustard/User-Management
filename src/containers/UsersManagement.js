@@ -1,56 +1,66 @@
 import React from "react";
 import axios from "axios";
 import "./UsersManagement.css";
-import { Link, Router, navigate } from "@reach/router";
-import UsersTable from "../components/UsersTable";
+import { Router, navigate } from "@reach/router";
+import ShowUsers from "../components/ShowUsers";
 import ShowUser from "../components/ShowUser";
 import NewUser from "../components/NewUser";
+import Prompt from "../components/Prompt";
+import NavLink from "../components/NavLink";
+import NotFound from "../components/NotFound";
 
 class UsersManagement extends React.Component {
   state = {
     users: [],
-    selectedUserId: null,
     error: false,
+    selectedUserId: null,
   };
 
-  async componentDidMount() {console.log("UsersManagement - Component Did Mount!")
+  async componentDidMount() {
     try {
       const response = await axios.get("/users");
       const users = response.data;
       this.setState({ users });
     } catch (error) {
-      this.setState({ error: true });
+      this.setState ({ error: true })
     }
   }
 
-  userSelectedHandler = (id) => {
+  selectUserHandler = (id) => {
     this.setState({ selectedUserId: id });
     navigate(`/users/${id}`);
   };
 
-  render() {console.log("UsersManagement - Rendered!")
+  render() {
     return (
       <div className="UsersManagement">
         <nav>
-          <Link to="/users" className="Link">
+          <NavLink to="/" className="Link">
+            Welcome
+          </NavLink>
+          <NavLink to="/users" className="Link">
             Show Users
-          </Link>
-          <Link to="/users/new" className="Link">
+          </NavLink>
+          <NavLink to="/users/new" className="Link">
             Create New User
-          </Link>
-          <Link to="/users/:userId" style={{visibility: "hidden"}} />
+          </NavLink>
+          <NavLink to={"/users/" + this.state.selectedUserId}>
+            Show User
+          </NavLink>
         </nav>
 
         <Router>
-          <UsersTable
+          <Prompt path="/" />
+          <ShowUsers
             path="/users"
             error={this.state.error}
             users={this.state.users}
-            userSelectedHandler={this.userSelectedHandler}
+            selectUserHandler={this.selectUserHandler}
           />
           <NewUser path="/users/new" />
+          <ShowUser path="/users/:id" users={this.state.users} />
+          <NotFound default />
         </Router>
-        <ShowUser path="/user/:userId" id={this.state.selectedUserId} />
       </div>
     );
   }
