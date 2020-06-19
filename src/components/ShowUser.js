@@ -1,7 +1,8 @@
 import React from "react";
 import axios from "axios";
 import "./ShowUser.css";
-import ErrorMessage from "./ErrorMessage";
+import Error from "./Error";
+import Loading from './Loading'
 
 class ShowUser extends React.Component {
   constructor(props) {
@@ -38,7 +39,7 @@ class ShowUser extends React.Component {
 
   render() {
     return this.state.error ? (
-      <ErrorMessage />
+      <Error />
     ) : this.state.loadedUser ? (
       <div className="ShowUser">
         <h1>User</h1>
@@ -46,7 +47,7 @@ class ShowUser extends React.Component {
         <p>Email: {this.state.loadedUser.email}</p>
       </div>
     ) : (
-      <h1>Loading...</h1>
+      <Loading />
     );
   }
 }

@@ -1,12 +1,12 @@
 import React from "react";
 import UserRow from "./UserRow";
 import "./ShowUsers.css";
-import ErrorMessage from "./ErrorMessage";
+import Error from "./Error";
 
 const ShowUsers = (props) => {
   const { error, users, selectUserHandler } = props;
 
-  if (error) return <ErrorMessage />;
+  if (error) return <Error />;
 
   const userRows = users.map((user) => (
     <UserRow
