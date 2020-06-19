@@ -57,7 +57,7 @@ class UsersManagement extends React.Component {
             users={this.state.users}
             selectUserHandler={this.selectUserHandler}
           />
-          <NewUser path="/users/new" />
+          <NewUser path="/users/new" usersCount={this.state.users.length} />
           <ShowUser path="/users/:id" users={this.state.users} />
           <NotFound default />
         </Router>
