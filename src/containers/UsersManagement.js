@@ -17,6 +17,10 @@ class UsersManagement extends React.Component {
   };
 
   async componentDidMount() {
+    this.getUsers();
+  }
+
+  getUsers = async () => {
     try {
       const response = await axios.get("/users");
       const users = response.data;
@@ -24,7 +28,7 @@ class UsersManagement extends React.Component {
     } catch (error) {
       this.setState({ error: true });
     }
-  }
+  };
 
   selectUserHandler = (id) => {
     this.setState({ selectedUserId: id });
@@ -43,9 +47,6 @@ class UsersManagement extends React.Component {
           </NavLink>
           <NavLink to="/users/new" className="Link">
             Create New User
-          </NavLink>
-          <NavLink to={"/users/" + this.state.selectedUserId}>
-            Show User
           </NavLink>
         </nav>
 

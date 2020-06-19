@@ -2,7 +2,7 @@ import React from "react";
 import axios from "axios";
 import "./ShowUser.css";
 import Error from "./Error";
-import Loading from './Loading'
+import Loading from "./Loading";
 
 class ShowUser extends React.Component {
   constructor(props) {
