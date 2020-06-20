@@ -1,6 +1,7 @@
 import React from "react";
 import axios from "axios";
 import { navigate } from "@reach/router";
+import Error from "./Error";
 import "../styles.css";
 
 class NewUser extends React.Component {
@@ -9,6 +10,10 @@ class NewUser extends React.Component {
     this.state = {
       name: "",
       email: "",
+      errors: {
+        name: null,
+        email: null,
+      },
     };
   }
 
@@ -17,22 +22,53 @@ class NewUser extends React.Component {
   and be consistent with the test data provided in the `db.json` file 
   which are number strings that increment starting at `"1"`.
   */
-  newUserId = () => this.props.usersCount + 1;
+  newUserId = () => `${this.props.usersCount + 1}`;
 
   postUserHandler = async () => {
-    const idStr = `${this.newUserId()}`;
-    const user = {
-      id: idStr,
-      name: this.state.name,
-      email: this.state.email,
-    };
+    const inputName = this.state.name;
+    const inputEmail = this.state.email;
+    const validated = this.validated(inputName, inputEmail);
 
-    await axios.post("/users", user);
-    navigate("/");
+    if (!validated) {
+      console.log("VALIDATION ERROR: ", this.state.errors);
+    } else {
+      try {
+        const user = {
+          id: this.newUserId(),
+          name: inputName,
+          email: inputEmail,
+        };
+
+        await axios.post("/users", user);
+        navigate("/");
+      } catch (error) {
+        console.error(error);
+      }
+    }
+  };
+
+  validationError = (type, message) => {
+    const { errors } = { ...this.state };
+    const updatedErrors = errors;
+    updatedErrors[type] = message;
+    this.setState({ errors: updatedErrors });
+  };
+
+  validated = (inputName, inputEmail) => {
+    if (inputName && inputEmail) return true;
+
+    // Clear previous validation errors
+    this.validationError("name", null);
+    this.validationError("email", null);
+
+    if (!inputName) this.validationError("name", "You must enter a name");
+    if (!inputEmail)
+      this.validationError("email", "You must enter an email address");
+
+    return false;
   };
 
   handleNameChange = (event) => this.setState({ name: event.target.value });
-
   handleEmailChange = (event) => this.setState({ email: event.target.value });
 
   render() {
@@ -43,13 +79,11 @@ class NewUser extends React.Component {
           onSubmit={(event) => {
             event.preventDefault();
             this.postUserHandler();
-            navigate("/");
           }}
           className="card"
         >
           <label htmlFor="name">Name</label>
           <input
-            id="name"
             type="text"
             value={this.state.name}
             onChange={this.handleNameChange}
@@ -57,7 +91,6 @@ class NewUser extends React.Component {
           <br />
           <label htmlFor="email">Email</label>
           <input
-            id="email"
             type="text"
             value={this.state.email}
             onChange={this.handleEmailChange}
