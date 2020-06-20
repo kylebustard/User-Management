@@ -9,6 +9,11 @@ const inputStatus = {
   IDLE: "IDLE",
 };
 
+const submissionStatus = {
+  COMPLETE: "COMPLETE",
+  INCOMPLETE: "INCOMPLETE",
+};
+
 class NewUser extends React.Component {
   constructor(props) {
     super(props);
@@ -17,6 +22,7 @@ class NewUser extends React.Component {
       email: "",
       nameStatus: inputStatus.IDLE,
       emailStatus: inputStatus.IDLE,
+      userSubmissionStatus: submissionStatus.INCOMPLETE,
     };
   }
 
@@ -29,7 +35,8 @@ class NewUser extends React.Component {
       };
 
       await axios.post("/users", user);
-      navigate("/");
+      this.setState({ userSubmissionStatus: submissionStatus.COMPLETE });
+      console.log("COMPLETE");
     } catch (error) {
       console.error(error);
     }
@@ -78,6 +85,14 @@ class NewUser extends React.Component {
   };
 
   render() {
+    const {
+      name,
+      email,
+      nameStatus,
+      emailStatus,
+      userSubmissionStatus,
+    } = this.state;
+
     const okOrError = (status, inputType) => {
       const errorMessage =
         inputType === "name"
@@ -108,9 +123,7 @@ class NewUser extends React.Component {
       }
     };
 
-    const { name, email, nameStatus, emailStatus } = this.state;
-
-    return (
+    const createNewUserForm = (
       <div className="Users">
         <h1>Create New User</h1>
         <form
@@ -149,6 +162,22 @@ class NewUser extends React.Component {
         </form>
       </div>
     );
+
+    const userCreatedSuccess = (
+      <div className="Users">
+        <h1>User was created!</h1>
+        <div className="card">
+          <p>Click to return home.</p>
+          <button type="navigate" onClick={() => navigate("/")}>
+            Return
+          </button>
+        </div>
+      </div>
+    );
+
+    return userSubmissionStatus === submissionStatus.COMPLETE
+      ? userCreatedSuccess
+      : createNewUserForm;
   }
 }
 
