@@ -90,3 +90,11 @@ button {
   align-items: center;
   width: 600px;
 }
+
+.Error {
+  color: red;
+}
+
+.Success {
+  color: green;
+}
