@@ -1,6 +1,6 @@
 import React from "react";
 import UserRow from "./UserRow";
-import "./ShowUsers.css";
+import "../styles.css";
 import Error from "./Error";
 
 const ShowUsers = (props) => {
@@ -19,8 +19,8 @@ const ShowUsers = (props) => {
   ));
 
   return (
-    <div className="ShowUsers">
-      <h1>Users</h1>
+    <div className="Users">
+      <h1>Select a User</h1>
       <table>
         <thead>
           <tr>

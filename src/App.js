@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Logo from "./klogo.js";
-import "./App.css";
+import "./styles.css";
 import UsersManagement from "./containers/UsersManagement";
 
 class App extends Component {

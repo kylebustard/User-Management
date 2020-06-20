@@ -1,6 +1,6 @@
 import React from "react";
 import axios from "axios";
-import "./ShowUser.css";
+import "../styles.css";
 import Error from "./Error";
 import Loading from "./Loading";
 
@@ -41,10 +41,12 @@ class ShowUser extends React.Component {
     return this.state.error ? (
       <Error />
     ) : this.state.loadedUser ? (
-      <div className="ShowUser">
+      <div className="Users">
         <h1>User</h1>
-        <p>Name: {this.state.loadedUser.name}</p>
-        <p>Email: {this.state.loadedUser.email}</p>
+        <div className="card">
+          <p>Name: {this.state.loadedUser.name}</p>
+          <p>Email: {this.state.loadedUser.email}</p>
+        </div>
       </div>
     ) : (
       <Loading />

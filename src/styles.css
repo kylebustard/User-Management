@@ -1,0 +1,92 @@
+* {
+  /* border: 1px solid lightgray; */
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+h1 {
+  text-align: center;
+}
+
+nav {
+  list-style: none;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+table {
+  position: relative;
+  padding: 30px;
+  border: 1px solid #ccc;
+  box-shadow: 0 2px 2px #ccc;
+  padding-right: 50px;
+  padding-left: 50px;
+}
+
+label {
+  margin-bottom: 70px;
+}
+
+input {
+  margin: 10px;
+  width: 250px;
+}
+
+button {
+  padding: 0px;
+}
+
+.Header {
+  text-align: center;
+}
+
+.Header-header {
+  background-color: rgb(0, 184, 222);
+  height: 200px;
+  padding: 20px;
+  color: white;
+}
+
+.Header-title {
+  font-size: 1.5em;
+}
+
+.Header-intro {
+  font-size: large;
+}
+
+.card {
+  padding: 30px;
+  border: 1px solid #ccc;
+  box-shadow: 0 2px 2px #ccc;
+  width: 400px;
+}
+
+.Link {
+  padding: 20px;
+}
+
+.UsersManagement {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.Users {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 600px;
+}
