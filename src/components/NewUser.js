@@ -1,6 +1,6 @@
 import React from "react";
 import axios from "axios";
-import { navigate } from "@reach/router";
+import { Link } from "@reach/router";
 import "../styles.css";
 
 const inputStatus = {
@@ -168,9 +168,9 @@ class NewUser extends React.Component {
         <h1>User was created!</h1>
         <div className="card">
           <p>Click to return home.</p>
-          <button type="navigate" onClick={() => navigate("/")}>
+          <Link to="/" className="Link">
             Return
-          </button>
+          </Link>
         </div>
       </div>
     );
