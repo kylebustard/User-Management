@@ -14,13 +14,28 @@ class Table extends React.Component {
     };
   }
 
-  changeHandler = (event) =>
-    this.setState({ resultsPerPage: event.target.value });
+  changeResultsPerPage = (event) => {
+    this.setState({ resultsPerPage: event.target.value }, () =>
+      this.setState({
+        totalPages: Math.ceil(
+          this.props.results.length / this.state.resultsPerPage
+        ),
+      })
+    );
+  };
 
-  changePage = (pageNum) => this.setState({ currentPage: pageNum });
+  changePage = (pageNum) => {
+    this.setState({ currentPage: pageNum });
+  };
 
   render() {
     const { tableHeaders, results, clickHandler } = this.props;
+
+    const totalPages = Math.ceil(results.length / this.state.resultsPerPage);
+
+    const end = this.state.currentPage * this.state.resultsPerPage;
+    const startIdx = end - this.state.resultsPerPage;
+    const endIdx = end <= results.length ? end : results.length;
 
     const headerCells = tableHeaders.map((header, idx) => (
       <th key={idx}>{header}</th>
@@ -32,7 +47,7 @@ class Table extends React.Component {
           resultsPerPage={this.state.resultsPerPage}
           resultsType={"users"}
           pageOptions={pageOptions}
-          changeHandler={this.changeHandler}
+          changeResultsPerPage={this.changeResultsPerPage}
           numberOfResults={results.length}
         />
         <table>
@@ -40,17 +55,19 @@ class Table extends React.Component {
             <tr>{headerCells}</tr>
           </thead>
           <PaginatedResults
-            currentPage={this.state.currentPage}
             results={results}
-            resultsPerPage={this.state.resultsPerPage}
             clickHandler={clickHandler}
+            startIdx={startIdx}
+            endIdx={endIdx}
           />
         </table>
         <PaginationFooter
           currentPage={this.state.currentPage}
-          resultsPerPage={this.state.resultsPerPage}
-          numberOfResults={results.length}
+          totalPages={totalPages}
           changePage={this.changePage}
+          startIdx={startIdx}
+          endIdx={endIdx}
+          numberOfResults={results.length}
         />
       </React.Fragment>
     );

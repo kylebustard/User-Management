@@ -2,23 +2,25 @@ import React from "react";
 
 const PaginationFooter = ({
   currentPage,
-  resultsPerPage,
-  numberOfResults,
+  totalPages,
   changePage,
+  startIdx,
+  endIdx,
+  numberOfResults,
 }) => {
-  const totalPages = Math.ceil(numberOfResults / resultsPerPage);
-
-  const pageIndexBox = new Array(totalPages).fill(null).map((_, idx) => (
-    <li key={idx + 1} onClick={() => changePage(idx + 1)}>
-      {idx + 1}
-    </li>
-  ));
+  const pageIndexBox = new Array(totalPages).fill(null).map((_, idx) => {
+    const i = idx + 1;
+    return (
+      <li key={i} onClick={() => changePage(i)}>
+        {i}
+      </li>
+    );
+  });
 
   return (
     <div className="PaginationFooter">
       <p>
-        Current Page: {currentPage}. Number of results: {numberOfResults}. Total
-        pages: {totalPages}
+        Showing {startIdx + 1} to {endIdx} of {numberOfResults} users
       </p>
       <ul>{pageIndexBox}</ul>
     </div>

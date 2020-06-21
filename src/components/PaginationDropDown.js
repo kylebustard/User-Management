@@ -4,7 +4,7 @@ const PaginationDropDown = ({
   resultsPerPage,
   resultsType,
   pageOptions,
-  changeHandler,
+  changeResultsPerPage,
   numberOfResults,
 }) => (
   <label htmlFor="pagination">
@@ -12,8 +12,8 @@ const PaginationDropDown = ({
     <select
       id="resultsPerPage"
       value={resultsPerPage}
-      onChange={changeHandler}
-      onBlur={changeHandler}
+      onChange={changeResultsPerPage}
+      onBlur={changeResultsPerPage}
       disabled={!numberOfResults}
     >
       <option>{resultsPerPage}</option>

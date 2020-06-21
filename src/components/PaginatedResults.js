@@ -1,19 +1,15 @@
 import React from "react";
 import UserRow from "./UserRow";
 
-const PaginatedResults = ({
-  currentPage,
-  results,
-  resultsPerPage,
-  clickHandler,
-}) => {
+const PaginatedResults = ({ results, clickHandler, startIdx, endIdx }) => {
   const slicedResults = (startIdx, endIdx, results) =>
-    results.slice(startIdx - 1, endIdx);
+    results.slice(startIdx, endIdx);
 
-  const getSlicedResults = slicedResults(1, resultsPerPage, results);
+  const getSlicedResults = slicedResults(startIdx, endIdx, results);
 
   const userRows = getSlicedResults.map((user) => (
     <UserRow
+      key={user.id}
       name={user.name}
       email={user.email}
       id={user.id}
