@@ -125,7 +125,7 @@ class NewUser extends React.Component {
 
     const createNewUserForm = (
       <div className="Users">
-        <h1>Create New User</h1>
+        <h1>Create new user</h1>
         <form
           onSubmit={(event) => {
             this.submitHandler(event);
