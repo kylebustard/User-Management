@@ -15,7 +15,7 @@ const ShowUsers = (props) => {
       <h1>Select a user</h1>
       <Table
         tableHeaders={tableHeaders}
-        content={users}
+        results={users}
         clickHandler={selectUserHandler}
       />
     </div>

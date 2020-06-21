@@ -1,37 +1,29 @@
 import React from "react";
-import UserRow from "./UserRow";
 import PaginationDropDown from "./PaginationDropDown";
+import PaginationFooter from "./PaginationFooter";
+import PaginatedResults from "./PaginatedResults";
 
 const pageOptions = [5, 10, 15, 20];
-
-// const pagination = (totalResults) => (resultsPerPage) => {}
 
 class Table extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       resultsPerPage: 10,
+      currentPage: 1,
     };
   }
 
   changeHandler = (event) =>
     this.setState({ resultsPerPage: event.target.value });
 
+  changePage = (pageNum) => this.setState({ currentPage: pageNum });
+
   render() {
-    const { tableHeaders, content, clickHandler } = this.props;
+    const { tableHeaders, results, clickHandler } = this.props;
 
     const headerCells = tableHeaders.map((header, idx) => (
       <th key={idx}>{header}</th>
-    ));
-
-    const userRows = content.map((user) => (
-      <UserRow
-        key={user.id}
-        name={user.name}
-        email={user.email}
-        id={user.id}
-        selectUserHandler={clickHandler}
-      />
     ));
 
     return (
@@ -41,14 +33,25 @@ class Table extends React.Component {
           resultsType={"users"}
           pageOptions={pageOptions}
           changeHandler={this.changeHandler}
-          resultsLength={content.length}
+          numberOfResults={results.length}
         />
         <table>
           <thead>
             <tr>{headerCells}</tr>
           </thead>
-          <tbody>{userRows}</tbody>
+          <PaginatedResults
+            currentPage={this.state.currentPage}
+            results={results}
+            resultsPerPage={this.state.resultsPerPage}
+            clickHandler={clickHandler}
+          />
         </table>
+        <PaginationFooter
+          currentPage={this.state.currentPage}
+          resultsPerPage={this.state.resultsPerPage}
+          numberOfResults={results.length}
+          changePage={this.changePage}
+        />
       </React.Fragment>
     );
   }
