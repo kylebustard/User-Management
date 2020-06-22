@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Logo from "./klogo.js";
 import "./styles.css";
-import UsersManagement from "./containers/UsersManagement";
+import UsersManagement from "./components/UsersManagement";
 
 class App extends Component {
   render() {

@@ -1,5 +1,5 @@
 import React from "react";
-import { inputStatus, submissionStatus } from "./FormConstants";
+import { inputStatus } from "./FormConstants";
 
 const OkOrError = ({ userInputStatus, inputType }) => {
   const errorMessage =

@@ -2,12 +2,12 @@ import React from "react";
 import axios from "axios";
 import "./../styles.css";
 import { Router, navigate } from "@reach/router";
-import ShowUsers from "../components/ShowUsers";
-import ShowUser from "../components/ShowUser";
-import NewUser from "../components/NewUser";
-import WelcomePrompt from "../components/WelcomePrompt";
-import NavLink from "../components/NavLink";
-import NotFound from "../components/NotFound";
+import ShowUsers from "./ShowUsers";
+import ShowUser from "./ShowUser";
+import NewUser from "./NewUser";
+import WelcomePrompt from "./WelcomePrompt";
+import NavLink from "./NavLink";
+import NotFound from "./NotFound";
 
 class UsersManagement extends React.Component {
   constructor(props) {
