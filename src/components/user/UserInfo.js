@@ -1,10 +1,10 @@
 import React from "react";
-import "../styles.css";
-import Form from "./Form";
-import Edit from "./Edit";
-import Delete from "./Delete";
+import "../../styles.css";
+import Form from "../form/Form";
+import Edit from "../buttons/Edit";
+import Delete from "../buttons/Delete";
 import axios from "axios";
-import SuccessMessage from "./SuccessMessage";
+import SuccessMessage from "../form/SuccessMessage";
 
 class UserInfo extends React.Component {
   constructor(props) {

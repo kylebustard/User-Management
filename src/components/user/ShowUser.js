@@ -1,8 +1,8 @@
 import React from "react";
 import axios from "axios";
-import "../styles.css";
-import Error from "./Error";
-import Loading from "./Loading";
+import "../../styles.css";
+import Error from "../Error";
+import Loading from "../Loading";
 import UserInfo from "./UserInfo";
 
 class ShowUser extends React.Component {

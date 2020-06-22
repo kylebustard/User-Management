@@ -1,6 +1,6 @@
 import React from "react";
-import "../styles.css";
-import Error from "./Error";
+import "../../styles.css";
+import Error from "../Error";
 import Table from "./Table";
 
 const ShowUsers = (props) => {

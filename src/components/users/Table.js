@@ -1,7 +1,7 @@
 import React from "react";
-import PaginationDropDown from "./PaginationDropDown";
-import PaginationFooter from "./PaginationFooter";
-import PaginatedResults from "./PaginatedResults";
+import PaginationDropDown from "./pagination/PaginationDropDown";
+import PaginationFooter from "./pagination/PaginationFooter";
+import PaginatedResults from "./pagination/PaginatedResults";
 
 const pageOptions = ["5", "10", "15", "20", "ALL"];
 

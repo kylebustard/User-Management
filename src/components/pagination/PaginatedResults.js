@@ -1,5 +1,5 @@
 import React from "react";
-import UserRow from "./UserRow";
+import UserRow from "../UserRow";
 
 const PaginatedResults = ({ results, clickHandler, startIdx, endIdx }) => {
   const slicedResults = (startIdx, endIdx, results) =>

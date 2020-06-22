@@ -1,10 +1,10 @@
 import React from "react";
 import axios from "axios";
-import "./../styles.css";
+import "../../styles.css";
 import { Router, navigate } from "@reach/router";
-import ShowUsers from "./ShowUsers";
-import ShowUser from "./ShowUser";
-import NewUser from "./NewUser";
+import ShowUsers from "../users/ShowUsers";
+import ShowUser from "../user/ShowUser";
+import NewUser from "../newUser/NewUser";
 import WelcomePrompt from "./WelcomePrompt";
 import NavLink from "./NavLink";
 import NotFound from "./NotFound";

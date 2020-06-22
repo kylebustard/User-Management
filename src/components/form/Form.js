@@ -1,9 +1,9 @@
 import React from "react";
 import axios from "axios";
 
-import "../styles.css";
-import Submit from "./Submit";
-import Cancel from "./Cancel";
+import "../../styles.css";
+import Submit from "../buttons/Submit";
+import Cancel from "../buttons/Cancel";
 import OkOrError from "./OkOrError";
 import { inputStatus, submissionStatus } from "./FormConstants";
 import SuccessMessage from "./SuccessMessage";
