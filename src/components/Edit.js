@@ -1,5 +1,7 @@
 import React from "react";
 
-const Edit = ({ editHandler }) => <button onClick={editHandler}>Edit</button>;
+const Edit = ({ activeEditMode }) => (
+  <button onClick={activeEditMode}>Edit</button>
+);
 
 export default Edit;

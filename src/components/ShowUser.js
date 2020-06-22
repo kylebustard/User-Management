@@ -48,6 +48,7 @@ class ShowUser extends React.Component {
       <Error />
     ) : this.state.loadedUser ? (
       <UserInfo
+        id={this.state.loadedUser.id}
         name={this.state.loadedUser.name}
         email={this.state.loadedUser.email}
         submitHandler={this.submitHandler}

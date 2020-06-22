@@ -1,6 +1,6 @@
 import React from "react";
 import "../styles.css";
-import Submit from "./Submit";
+import Form from "./Form";
 import Edit from "./Edit";
 
 class ShowUser extends React.Component {
@@ -11,15 +11,19 @@ class ShowUser extends React.Component {
     };
   }
 
-  editHandler = () => {
+  activeEditMode = () => {
     this.setState({ editMode: true });
     console.log("edit");
   };
 
   render() {
-    const { name, email, submitHandler } = this.props;
+    const { id, name, email } = this.props;
 
-    return (
+    const user = { id, name, email };
+
+    return this.state.editMode ? (
+      <Form user={user} httpMethod={"PATCH"} />
+    ) : (
       <div className="Users">
         <h1>User</h1>
         <div className="card">
@@ -31,11 +35,7 @@ class ShowUser extends React.Component {
           <span>{email}</span>
           <br />
           <br />
-          {this.state.editMode ? (
-            <Submit submitHandler={submitHandler} />
-          ) : (
-            <Edit editHandler={this.editHandler} />
-          )}
+          <Edit activeEditMode={this.activeEditMode} />
         </div>
       </div>
     );
