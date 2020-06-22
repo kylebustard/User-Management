@@ -23,7 +23,6 @@ table {
   position: relative;
   padding: 30px;
   border-collapse: separate;
-  border: 3px solid purple;
   box-shadow: 0 2px 2px #ccc;
   width: 800px;
   padding-right: 50px;
@@ -88,12 +87,19 @@ li {
   width: 400px;
 }
 
+.card label {
+  font-weight: bold;
+}
+
+.card span {
+  border-bottom: 1px solid rgb(0, 184, 222);
+}
+
 .Link {
   padding: 20px;
 }
 
 .UsersManagement {
-  /* border: 3px solid yellow; */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -106,12 +112,19 @@ li {
 }
 
 .Users {
-  /* border: 3px solid green; */
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 800px;
+}
+
+.Users-success {
+  text-align: center;
+}
+
+.hovered {
+  border-bottom: 1px solid rgb(0, 184, 222);
 }
 
 .Error {
@@ -123,19 +136,33 @@ li {
 }
 
 .PaginationFooter {
-  border: 1px solid pink;
   display: flex;
   justify-content: space-between;
   width: 75%;
 }
 
 .PaginationFooter ul {
-  border: 1px solid green;
   display: flex;
   justify-content: space-around;
   width: 25%;
+  box-shadow: 0 2px 2px #ccc;
 }
 
 .PaginationFooter li {
-  border: 1px solid blue;
+  box-shadow: 0 2px 2px rgb(0, 184, 222);
+  width: 30px;
+  border: 1px solid rgb(0, 184, 222);
+  text-align: center;
+}
+
+.PageNum {
+  opacity: 50%;
+  background-color: rgb(0, 184, 222);
+  color: white;
+  box-shadow: 0 2px 2px #ccc;
+}
+
+.PageNum-active {
+  box-shadow: 0 2px 2px rgb(0, 184, 222);
+  color: black;
 }

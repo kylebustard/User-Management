@@ -10,8 +10,11 @@ const PaginationFooter = ({
 }) => {
   const pageIndexBox = new Array(totalPages).fill(null).map((_, idx) => {
     const i = idx + 1;
+    const isActive = i === currentPage ? true : false;
+    const theClass = isActive ? "PageNum-active" : "PageNum";
+
     return (
-      <li key={i} onClick={() => changePage(i)}>
+      <li key={i} className={theClass} onClick={() => changePage(i)}>
         {i}
       </li>
     );

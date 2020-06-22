@@ -15,8 +15,7 @@ class Table extends React.Component {
   }
 
   changeResultsPerPage = (event) => {
-    this.setState({ resultsPerPage: event.target.value });
-    this.changePage(1);
+    this.setState({ resultsPerPage: event.target.value, currentPage: 1 });
   };
 
   changePage = (pageNum) => {

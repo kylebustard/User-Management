@@ -2,6 +2,7 @@ import React from "react";
 import axios from "axios";
 import { Link } from "@reach/router";
 import "../styles.css";
+import Submit from "./Submit";
 
 const inputStatus = {
   ERROR: "ERROR",
@@ -132,7 +133,7 @@ class NewUser extends React.Component {
           }}
           className="card"
         >
-          <label htmlFor="name">Name</label>
+          <label htmlFor="name">Name: </label>
           <input
             type="text"
             value={name}
@@ -141,7 +142,7 @@ class NewUser extends React.Component {
           {nameStatus === inputStatus.IDLE
             ? null
             : okOrError(nameStatus, "name")}
-          <label htmlFor="email">Email</label>
+          <label htmlFor="email">Email: </label>
           <input
             type="text"
             value={email}
@@ -151,20 +152,13 @@ class NewUser extends React.Component {
             ? null
             : okOrError(emailStatus, "email")}
           <br />
-          <button
-            type="submit"
-            onSubmit={(event) => {
-              this.submitHandler(event);
-            }}
-          >
-            Submit
-          </button>
+          <Submit submitHandler={this.submitHandler} />
         </form>
       </div>
     );
 
     const userCreatedSuccess = (
-      <div className="Users">
+      <div className="Users Users-success">
         <h1>User was created!</h1>
         <div className="card">
           <p>Click to return home.</p>

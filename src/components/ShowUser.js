@@ -3,6 +3,7 @@ import axios from "axios";
 import "../styles.css";
 import Error from "./Error";
 import Loading from "./Loading";
+import UserInfo from "./UserInfo";
 
 class ShowUser extends React.Component {
   constructor(props) {
@@ -37,17 +38,20 @@ class ShowUser extends React.Component {
     }
   }
 
+  submitHandler = (event) => {
+    event.preventDefault();
+    this.patchUserHandler();
+  };
+
   render() {
     return this.state.error ? (
       <Error />
     ) : this.state.loadedUser ? (
-      <div className="Users">
-        <h1>User</h1>
-        <div className="card">
-          <p>Name: {this.state.loadedUser.name}</p>
-          <p>Email: {this.state.loadedUser.email}</p>
-        </div>
-      </div>
+      <UserInfo
+        name={this.state.loadedUser.name}
+        email={this.state.loadedUser.email}
+        submitHandler={this.submitHandler}
+      />
     ) : (
       <Loading />
     );
