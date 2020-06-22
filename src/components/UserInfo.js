@@ -2,18 +2,30 @@ import React from "react";
 import "../styles.css";
 import Form from "./Form";
 import Edit from "./Edit";
+import Delete from "./Delete";
+import axios from "axios";
+import SuccessMessage from "./SuccessMessage";
 
-class ShowUser extends React.Component {
+class UserInfo extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       editMode: false,
+      isDeleted: false,
     };
   }
 
   activeEditMode = () => {
     this.setState({ editMode: true });
-    console.log("edit");
+  };
+
+  deleteHandler = async (id) => {
+    try {
+      await axios.delete(`/users/${id}`);
+      this.setState({ isDeleted: true });
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   render() {
@@ -21,7 +33,9 @@ class ShowUser extends React.Component {
 
     const user = { id, name, email };
 
-    return this.state.editMode ? (
+    return this.state.isDeleted ? (
+      <SuccessMessage httpMethod={"DELETE"} />
+    ) : this.state.editMode ? (
       <Form user={user} httpMethod={"PATCH"} />
     ) : (
       <div className="Users">
@@ -36,10 +50,11 @@ class ShowUser extends React.Component {
           <br />
           <br />
           <Edit activeEditMode={this.activeEditMode} />
+          <Delete deleteHandler={this.deleteHandler} id={id} />
         </div>
       </div>
     );
   }
 }
 
-export default ShowUser;
+export default UserInfo;

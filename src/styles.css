@@ -1,5 +1,4 @@
 * {
-  /* border: 1px solid lightcoral; */
   box-sizing: border-box;
 }
 
@@ -40,7 +39,7 @@ label {
 
 input {
   margin: 10px;
-  width: 250px;
+  width: 260px;
 }
 
 button {
@@ -165,4 +164,27 @@ li {
 .PageNum-active {
   box-shadow: 0 2px 2px rgb(0, 184, 222);
   color: black;
+}
+
+.Users button {
+  padding: 5px;
+  margin: 10px;
+  font-weight: bold;
+  font-size: 16px;
+  top: 30px;
+}
+
+.Cancel {
+  background-color: #ccc;
+  color: rgb(0, 184, 222);
+}
+
+.Delete {
+  background-color: #ccc;
+  color: rgb(0, 184, 222);
+}
+
+.Delete span {
+  color: red;
+  border-bottom: 1px solid red;
 }
