@@ -11,7 +11,7 @@ const PaginationDropDown = ({
     Show
     <select
       id="resultsPerPage"
-      value={resultsPerPage}
+      value="number"
       onChange={changeResultsPerPage}
       onBlur={changeResultsPerPage}
       disabled={!numberOfResults}

@@ -53,6 +53,15 @@ button {
   width: 100%;
 }
 
+select {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+li {
+  list-style: none;
+}
+
 .Header {
   text-align: center;
 }
@@ -111,4 +120,22 @@ button {
 
 .Success {
   color: green;
+}
+
+.PaginationFooter {
+  border: 1px solid pink;
+  display: flex;
+  justify-content: space-between;
+  width: 75%;
+}
+
+.PaginationFooter ul {
+  border: 1px solid green;
+  display: flex;
+  justify-content: space-around;
+  width: 25%;
+}
+
+.PaginationFooter li {
+  border: 1px solid blue;
 }

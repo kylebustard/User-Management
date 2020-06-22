@@ -3,7 +3,7 @@ import PaginationDropDown from "./PaginationDropDown";
 import PaginationFooter from "./PaginationFooter";
 import PaginatedResults from "./PaginatedResults";
 
-const pageOptions = [5, 10, 15, 20];
+const pageOptions = ["5", "10", "15", "20", "ALL"];
 
 class Table extends React.Component {
   constructor(props) {
@@ -15,13 +15,8 @@ class Table extends React.Component {
   }
 
   changeResultsPerPage = (event) => {
-    this.setState({ resultsPerPage: event.target.value }, () =>
-      this.setState({
-        totalPages: Math.ceil(
-          this.props.results.length / this.state.resultsPerPage
-        ),
-      })
-    );
+    this.setState({ resultsPerPage: event.target.value });
+    this.changePage(1);
   };
 
   changePage = (pageNum) => {
@@ -61,14 +56,16 @@ class Table extends React.Component {
             endIdx={endIdx}
           />
         </table>
-        <PaginationFooter
-          currentPage={this.state.currentPage}
-          totalPages={totalPages}
-          changePage={this.changePage}
-          startIdx={startIdx}
-          endIdx={endIdx}
-          numberOfResults={results.length}
-        />
+        {this.state.resultsPerPage !== "ALL" ? (
+          <PaginationFooter
+            currentPage={this.state.currentPage}
+            totalPages={totalPages}
+            changePage={this.changePage}
+            startIdx={startIdx}
+            endIdx={endIdx}
+            numberOfResults={results.length}
+          />
+        ) : null}
       </React.Fragment>
     );
   }
