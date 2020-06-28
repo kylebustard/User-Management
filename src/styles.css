@@ -94,8 +94,21 @@ li {
   border-bottom: 1px solid rgb(0, 184, 222);
 }
 
+.User-info-footer {
+  width: 50%;
+  display: flex;
+  align-content: flex-end;
+  justify-content: start;
+  padding: 20px;
+}
+
 .Link {
   padding: 20px;
+}
+
+.Link .Return-to-users {
+  border: 1px solid purple;
+  margin-left: 50px;
 }
 
 .UsersManagement {

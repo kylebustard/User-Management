@@ -5,6 +5,7 @@ import Edit from "../buttons/Edit";
 import Delete from "../buttons/Delete";
 import axios from "axios";
 import SuccessMessage from "../form/SuccessMessage";
+import ReturnLink from "../links/ReturnLink";
 
 class UserInfo extends React.Component {
   constructor(props) {
@@ -51,6 +52,9 @@ class UserInfo extends React.Component {
           <br />
           <Edit activeEditMode={this.activeEditMode} />
           <Delete deleteHandler={this.deleteHandler} id={id} />
+        </div>
+        <div className="User-info-footer">
+          <ReturnLink url={"/users"} />
         </div>
       </div>
     );

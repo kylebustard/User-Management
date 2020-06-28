@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "@reach/router";
+import ReturnLink from "../links/ReturnLink";
 
 const SuccessMessage = ({ httpMethod }) => {
   const message = () => {
@@ -18,9 +18,7 @@ const SuccessMessage = ({ httpMethod }) => {
       <h1>{message()}</h1>
       <div className="card">
         <p>Click to return home.</p>
-        <Link to="/" className="Link">
-          Return
-        </Link>
+        <ReturnLink url={"/"} />
       </div>
     </div>
   );

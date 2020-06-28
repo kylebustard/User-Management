@@ -3,23 +3,32 @@ import "../../styles.css";
 import Error from "../Error";
 import Table from "./Table";
 
-const ShowUsers = (props) => {
-  const { error, users, selectUserHandler } = props;
+class ShowUsers extends React.Component {
+  constructor(props) {
+    super(props);
+  }
 
-  if (error) return <Error />;
+  async componentDidMount() {
+    this.props.getUsers();
+  }
 
-  const tableHeaders = ["Name", "Email"];
+  render() {
+    const { error, users, selectUserHandler } = this.props;
+    const tableHeaders = ["Name", "Email"];
 
-  return (
-    <div className="Users">
-      <h1>Select a user</h1>
-      <Table
-        tableHeaders={tableHeaders}
-        results={users}
-        clickHandler={selectUserHandler}
-      />
-    </div>
-  );
-};
+    return error ? (
+      <Error />
+    ) : (
+      <div className="Users">
+        <h1>Select a user</h1>
+        <Table
+          tableHeaders={tableHeaders}
+          results={users}
+          clickHandler={selectUserHandler}
+        />
+      </div>
+    );
+  }
+}
 
 export default ShowUsers;

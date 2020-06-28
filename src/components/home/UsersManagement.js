@@ -1,13 +1,13 @@
 import React from "react";
-import axios from "axios";
 import "../../styles.css";
 import { Router, navigate } from "@reach/router";
 import ShowUsers from "../users/ShowUsers";
 import ShowUser from "../user/ShowUser";
 import NewUser from "../newUser/NewUser";
 import WelcomePrompt from "./WelcomePrompt";
-import NavLink from "./NavLink";
+import NavLink from "../links/NavLink";
 import NotFound from "./NotFound";
+import axios from "axios";
 
 class UsersManagement extends React.Component {
   constructor(props) {
@@ -17,10 +17,6 @@ class UsersManagement extends React.Component {
       error: false,
       selectedUserId: null,
     };
-  }
-
-  async componentDidMount() {
-    this.getUsers();
   }
 
   getUsers = async () => {
@@ -60,6 +56,7 @@ class UsersManagement extends React.Component {
             error={this.state.error}
             users={this.state.users}
             selectUserHandler={this.selectUserHandler}
+            getUsers={this.getUsers}
           />
           <NewUser path="/users/new" usersCount={this.state.users.length} />
           <ShowUser path="/users/:id" users={this.state.users} />
